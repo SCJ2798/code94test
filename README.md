@@ -1,90 +1,110 @@
 # Code94Test
 
+## Overview
 
-## Table of Contents
-
-1. [Flutter Installation and Running the Application](#flutter-installation-and-running-the-application)
-2. [Select Base Currency](#select-base-currency)
-3. [Insert Amount](#insert-base-amount)
-4. [Add Target Currency](#add-target-currency)
-5. [Delete Target Currency](#delete-target-currency)
+This README provides instructions for setting up and running a Flutter application that demonstrates a currency converter. The app utilizes MVVM architecture with Provider for state management. Below are the detailed steps for installation, app architecture, and features.
 
 ---
 
 ## 1. Flutter Installation and Running the Application
 
-To get started with the Flutter application, follow these steps:
+### Prerequisites
 
-1. **Install Flutter:**
-   - Follow the instructions for your operating system from the [official Flutter installation guide](https://flutter.dev/docs/get-started/install).
-   
-2. **Clone the Repository:**
+Ensure you have the following installed:
+- Flutter SDK (version 3.0 or later)
+- Dart SDK
+- A compatible IDE (Visual Studio Code, Android Studio, etc.)
+- Android or iOS emulator/device
+
+### Installation
+
+1. **Clone the repository**:
    ```bash
-   git clone https://github.com/SCJ2798/code94test.git
-   cd code94test
+   git clone https://github.com/your-username/flutter-currency-converter.git
+   cd flutter-currency-converter
    ```
 
-3. **Install Dependencies:**
+2. **Install dependencies**:
    ```bash
    flutter pub get
    ```
 
-4. **Run the Application:**
+3. **Run the application**:
    ```bash
    flutter run
    ```
 
-   Ensure you have an emulator running or a physical device connected.
+---
+
+## 2. App Architecture
+
+### MVVM Architecture
+
+The app follows the Model-View-ViewModel (MVVM) architecture pattern to separate concerns and improve maintainability.
+
+- **Model**: Represents the data structure. In this app, it includes classes related to currency data and conversion.
+- **View**: Contains the UI components that display data and interact with the user.
+- **ViewModel**: Manages the business logic and communicates between the Model and the View. It handles the state of the app and performs currency conversions.
+
+### Provider State Management
+
+Provider is used for state management to manage the app's state efficiently.
+
+- **Provider**: A package for state management that provides a way to expose and consume data within the app.
+- **ChangeNotifierProvider**: Used to notify listeners about changes in the state.
+- **Consumer**: Allows widgets to listen to and rebuild based on the state changes.
 
 ---
 
-## 2. Select Base Currency
+## 3. App Features Details
 
-To select a base currency, follow these steps:
+### 3.1. Select Base Currency
 
-1. **Go to the Insert Amount Section:**
-   - Locate the section where you can input the amount.
+1. **Navigate to Insert Amount Section**:
+   - Find the section where you can enter the amount.
 
-2. **Select Currency:**
-   - On the right side of the text field, you'll find a dropdown menu. Click on it to select the currency you want as the base currency.
+2. **Select Currency**:
+   - On the right side of the text field, there is a dropdown menu.
+   - Tap on the dropdown and select the desired base currency.
 
----
+### 3.2. Insert Base Amount
 
-## 3. Insert Amount
+1. **Navigate to Insert Amount Section**:
+   - Go to the section where you enter the amount.
 
-To input the base amount:
+2. **Enter Amount**:
+   - In the text field on the left side, type the amount you want to convert.
 
-1. **Go to Insert Amount Section:**
-   - This is the section where you can enter the amount.
+### 3.3. Add Target Currency
 
-2. **Enter Amount:**
-   - Input the amount you want to convert in the text field on the left side of the section.
+1. **Click Floating Button**:
+   - At the bottom right side of the screen, there is a floating action button (FAB).
 
----
+2. **Select Currency**:
+   - After clicking the FAB, a dialog or a new screen will appear where you can select the target currency from a dropdown list.
 
-## 4. Add Target Currency
+3. **Save Target Currency**:
+   - After selecting the desired currency, click the save button to add it to the list of target currencies.
 
-To add a target currency for conversion:
+### 3.4. Delete Target Currency
 
-1. **Click Floating Action Button:**
-   - Locate the floating action button (FAB) at the bottom right side of the screen and click on it.
+1. **Click on Currency List Tile**:
+   - Find the currency you want to delete in the list of target currencies.
 
-2. **Select Currency:**
-   - In the pop-up that appears, select the currency you want to add from the "Select Currency" field.
-
-3. **Click Save:**
-   - After selecting the currency, click the save button to add the target currency to your list.
-
----
-
-## 5. Delete Target Currency
-
-To remove a target currency:
-
-1. **Click and Drag:**
-   - Find the currency you want to delete in the list. Click on the currency list tile and drag it from end to start. This action will trigger the delete option.
+2. **Drag to Delete**:
+   - Swipe or drag the currency list tile from the end to the start of the list to delete it.
 
 ---
 
+## Additional Information
 
+- **Folder Structure**: The app follows a structured folder layout to maintain clarity and separation of concerns.
+  - `lib/models/` - Contains data models
+  - `lib/views/` - Contains UI components
+  - `lib/viewmodels/` - Contains the ViewModel classes
+  - `lib/repository/` - Contains the Repository classes
+  - `lib/data/local` - Contains the Local data service classes
+  - `lib/data/remote` - Contains the Remote (API) data service classes
+  - `lib/data/error` - Contains the error classes
+  
 
