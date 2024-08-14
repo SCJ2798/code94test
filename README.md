@@ -20,8 +20,8 @@ Ensure you have the following installed:
 
 1. **Clone the repository**:
    ```bash
-   git clone https://github.com/your-username/flutter-currency-converter.git
-   cd flutter-currency-converter
+   git clone https://github.com/SCJ2798/code94test
+   cd code94test
    ```
 
 2. **Install dependencies**:
