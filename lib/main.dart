@@ -19,17 +19,65 @@ class MyApp extends StatelessWidget {
       ],
       child: MaterialApp(
         theme: ThemeData(
+          dropdownMenuTheme: DropdownMenuThemeData(
+            inputDecorationTheme: const InputDecorationTheme(
+              border: InputBorder.none,
+              fillColor: Colors.black,
+            ),
+            menuStyle: MenuStyle(
+                backgroundColor: MaterialStateProperty.all(Colors.white)),
+            textStyle: const TextStyle(
+              fontSize: 16,
+              color: Colors.white,
+            ),
+          ),
+          textTheme: const TextTheme(
+            titleLarge: TextStyle(
+              fontSize: 18,
+              color: Colors.white,
+              fontWeight: FontWeight.w600,
+            ),
+            labelLarge: TextStyle(
+              fontSize: 16,
+              color: Colors.white,
+              fontWeight: FontWeight.w600,
+            ),
+          ),
+          scaffoldBackgroundColor: Colors.black,
+          elevatedButtonTheme: ElevatedButtonThemeData(
+              style: ButtonStyle(
+                  backgroundColor: MaterialStateProperty.all(Colors.black),
+                  padding: MaterialStateProperty.all<EdgeInsets>(
+                      const EdgeInsets.all(16)),
+                  textStyle: MaterialStateProperty.all(
+                    const TextStyle(
+                      fontSize: 16,
+                      color: Colors.white,
+                    ),
+                  ))),
           appBarTheme: const AppBarTheme(
-              backgroundColor: Color.fromARGB(255, 0, 120, 240),
+              backgroundColor: Colors.black,
               titleTextStyle: TextStyle(
-                fontSize: 18,
+                fontSize: 20,
                 color: Colors.white,
                 fontWeight: FontWeight.w600,
               )),
           floatingActionButtonTheme: const FloatingActionButtonThemeData(
-              backgroundColor: Color.fromARGB(255, 0, 120, 240)),
+            backgroundColor: Colors.white,
+            splashColor: Colors.black,
+          ),
           colorScheme: ColorScheme.fromSeed(
               seedColor: const Color.fromARGB(255, 0, 120, 240)),
+          listTileTheme: ListTileThemeData(
+            tileColor: const Color.fromARGB(137, 46, 46, 46),
+            textColor: Colors.white,
+            contentPadding: const EdgeInsets.symmetric(
+              horizontal: 24,
+              vertical: 12,
+            ),
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(24.0)),
+          ),
           useMaterial3: true,
         ),
         home: const ExchangeViewPage(),

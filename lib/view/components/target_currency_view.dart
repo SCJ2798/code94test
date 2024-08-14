@@ -12,8 +12,6 @@ class TargetCurrencyListTileView extends StatelessWidget {
   TargetCurrencyListTileView(
       {super.key, required this.currencyModel, required this.baseAmount});
 
-  Future<void> _handleOnDimissable() async {}
-
   @override
   Widget build(BuildContext context) {
     return Dismissible(
@@ -47,18 +45,17 @@ class TargetCurrencyListTileView extends StatelessWidget {
       },
       key: Key("DK_${currencyModel.code}"),
       child: ListTile(
-        contentPadding: const EdgeInsets.symmetric(
-          horizontal: 16,
-          vertical: 8,
-        ),
-        shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(borderRadius)),
+        style: Theme.of(context).listTileTheme.style,
+        contentPadding: Theme.of(context).listTileTheme.contentPadding,
+        dense: true,
+        visualDensity: VisualDensity(horizontal: 0, vertical: 0),
+        shape: Theme.of(context).listTileTheme.shape,
         leading: Text(
           (currencyModel.value * baseAmount).toStringAsFixed(3),
-          style: const TextStyle(fontSize: 18),
+          style: Theme.of(context).textTheme.labelLarge,
         ),
-        trailing:
-            Text(currencyModel.code, style: const TextStyle(fontSize: 18)),
+        trailing: Text(currencyModel.code,
+            style: Theme.of(context).textTheme.labelLarge),
       ),
     );
   }

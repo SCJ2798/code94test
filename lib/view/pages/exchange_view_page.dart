@@ -66,14 +66,14 @@ class _ExchangeViewPageState extends State<ExchangeViewPage> {
             mainAxisSize: MainAxisSize.max,
             children: [
               //
-              const SizedBox(height: 12),
 
-              const Text(
-                "INSERT AMOUNT",
-                style: TextStyle(fontSize: 16),
+              Container(
+                margin: const EdgeInsets.symmetric(vertical: 12),
+                child: Text(
+                  "INSERT AMOUNT",
+                  style: Theme.of(context).textTheme.titleLarge,
+                ),
               ),
-
-              const SizedBox(height: 8),
 
               // Insert Base Amount & Select Base Currency
               Row(
@@ -86,7 +86,7 @@ class _ExchangeViewPageState extends State<ExchangeViewPage> {
                     child: TextFormField(
                       initialValue: "1.0",
                       focusNode: FocusNode(),
-                      style: const TextStyle(fontSize: 20),
+                      style: Theme.of(context).textTheme.titleLarge,
                       keyboardType: TextInputType.number,
                       onChanged: (value) async {
                         await Provider.of<CurrenryViewModel>(context,
@@ -103,17 +103,16 @@ class _ExchangeViewPageState extends State<ExchangeViewPage> {
                   Expanded(
                     flex: 2,
                     child: DropdownButtonFormField(
+                      elevation: 0,
                       decoration:
                           const InputDecoration(border: InputBorder.none),
-                      elevation: 0,
+                      style: Theme.of(context).textTheme.labelLarge,
                       value: currencyVM.baseCurrencyCode,
+                      dropdownColor: Colors.black,
                       items: currencyVM.allCurrencies
                           .map((e) => DropdownMenuItem(
                                 value: e.code,
-                                child: Text(
-                                  e.code,
-                                  style: const TextStyle(fontSize: 18),
-                                ),
+                                child: Text(e.code),
                               ))
                           .toList(),
                       onChanged: (value) {
@@ -127,27 +126,37 @@ class _ExchangeViewPageState extends State<ExchangeViewPage> {
                 ],
               ),
 
-              const SizedBox(height: 8),
-              const Text(
-                "CONVERT TO",
-                style: TextStyle(fontSize: 16),
+              Container(
+                margin: const EdgeInsets.symmetric(vertical: 8),
+                child: Text(
+                  "CONVERT TO",
+                  style: Theme.of(context).textTheme.titleLarge,
+                ),
               ),
-              const SizedBox(height: 8),
 
               // View target currencies list
-              Expanded(
-                flex: 1,
-                child: currencyVM.allTargetCurrencies.isEmpty
-                    ? const Center(
-                        child: Text("No Records Found"),
-                      )
-                    : ListView(
-                        children: currencyVM.allTargetCurrencies
-                            .map((e) => TargetCurrencyListTileView(
-                                currencyModel: e,
-                                baseAmount: currencyVM.baseAmount))
-                            .toList(),
-                      ),
+              Container(
+                margin: const EdgeInsets.symmetric(vertical: 8),
+                child: Expanded(
+                  flex: 1,
+                  child: currencyVM.allTargetCurrencies.isEmpty
+                      ? Center(
+                          child: Text(
+                            "No Records Found",
+                            style: Theme.of(context).textTheme.labelLarge,
+                          ),
+                        )
+                      : ListView.separated(
+                          itemCount: currencyVM.allTargetCurrencies.length,
+                          itemBuilder: (context, index) =>
+                              TargetCurrencyListTileView(
+                                  currencyModel:
+                                      currencyVM.allTargetCurrencies[index],
+                                  baseAmount: currencyVM.baseAmount),
+                          separatorBuilder: (BuildContext context, int index) =>
+                              const SizedBox(height: 8),
+                        ),
+                ),
               ),
               // Form
             ],
@@ -158,7 +167,7 @@ class _ExchangeViewPageState extends State<ExchangeViewPage> {
         onPressed: _onPressFloatingButton,
         child: const Icon(
           Icons.add,
-          color: Colors.white,
+          color: Colors.black,
         ),
       ),
     );

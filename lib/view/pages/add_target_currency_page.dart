@@ -73,7 +73,7 @@ class _AddTargetCurrencyViewPageState extends State<AddTargetCurrencyViewPage> {
                         },
                         child: const Text(
                           "Cancel",
-                          style: TextStyle(color: Colors.red, fontSize: 16),
+                          style: TextStyle(color: Colors.black, fontSize: 16),
                         ),
                       ),
                     ),
@@ -100,7 +100,6 @@ class _AddTargetCurrencyViewPageState extends State<AddTargetCurrencyViewPage> {
                                     content: Text("Something went Wrong")));
                           }
                         },
-                        style: TButtonStyle.common(),
                         child: const Text(
                           "Save",
                           style: TextStyle(
