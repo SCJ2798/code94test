@@ -1,0 +1,65 @@
+import 'package:flutter/material.dart';
+import 'package:ilabtest/error/comon_error.dart';
+import 'package:ilabtest/model/currency_model.dart';
+import 'package:ilabtest/utill/constant.dart';
+import 'package:ilabtest/view_model/currency_view_model.dart';
+import 'package:provider/provider.dart';
+
+class TargetCurrencyListTileView extends StatelessWidget {
+  CurrencyModel currencyModel;
+  double baseAmount;
+
+  TargetCurrencyListTileView(
+      {super.key, required this.currencyModel, required this.baseAmount});
+
+  Future<void> _handleOnDimissable() async {}
+
+  @override
+  Widget build(BuildContext context) {
+    return Dismissible(
+      background: Container(
+        color: Colors.red,
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: [
+            Container(
+              margin: const EdgeInsets.symmetric(horizontal: 12),
+              child: const Icon(
+                Icons.delete,
+                color: Colors.white,
+              ),
+            )
+          ],
+        ),
+      ),
+      direction: DismissDirection.endToStart,
+      onDismissed: (direction) async {
+        try {
+          await Provider.of<CurrenryViewModel>(context, listen: false)
+              .deleteTargetCurrency(currencyModel.code);
+        } catch (e) {
+          await Future.delayed(const Duration(milliseconds: 100));
+          if (!context.mounted) return;
+          ScaffoldMessenger.of(context).showSnackBar(
+              const SnackBar(content: Text("Something went Wrong")));
+        }
+      },
+      key: Key("DK_${currencyModel.code}"),
+      child: ListTile(
+        contentPadding: const EdgeInsets.symmetric(
+          horizontal: 16,
+          vertical: 8,
+        ),
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(borderRadius)),
+        leading: Text(
+          (currencyModel.value * baseAmount).toStringAsFixed(3),
+          style: const TextStyle(fontSize: 18),
+        ),
+        trailing:
+            Text(currencyModel.code, style: const TextStyle(fontSize: 18)),
+      ),
+    );
+  }
+}
