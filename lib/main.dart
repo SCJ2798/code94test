@@ -73,7 +73,7 @@ class MyApp extends StatelessWidget {
             textColor: Colors.white,
             contentPadding: const EdgeInsets.symmetric(
               horizontal: 24,
-              vertical: 12,
+              vertical: 8,
             ),
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(24.0)),

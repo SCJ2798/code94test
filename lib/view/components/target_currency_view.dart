@@ -47,8 +47,6 @@ class TargetCurrencyListTileView extends StatelessWidget {
       child: ListTile(
         style: Theme.of(context).listTileTheme.style,
         contentPadding: Theme.of(context).listTileTheme.contentPadding,
-        dense: true,
-        visualDensity: VisualDensity(horizontal: 0, vertical: 0),
         shape: Theme.of(context).listTileTheme.shape,
         leading: Text(
           (currencyModel.value * baseAmount).toStringAsFixed(3),

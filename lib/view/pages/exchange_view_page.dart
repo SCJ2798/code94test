@@ -127,7 +127,7 @@ class _ExchangeViewPageState extends State<ExchangeViewPage> {
               ),
 
               Container(
-                margin: const EdgeInsets.symmetric(vertical: 8),
+                margin: const EdgeInsets.symmetric(vertical: 16),
                 child: Text(
                   "CONVERT TO",
                   style: Theme.of(context).textTheme.titleLarge,
@@ -135,28 +135,25 @@ class _ExchangeViewPageState extends State<ExchangeViewPage> {
               ),
 
               // View target currencies list
-              Container(
-                margin: const EdgeInsets.symmetric(vertical: 8),
-                child: Expanded(
-                  flex: 1,
-                  child: currencyVM.allTargetCurrencies.isEmpty
-                      ? Center(
-                          child: Text(
-                            "No Records Found",
-                            style: Theme.of(context).textTheme.labelLarge,
-                          ),
-                        )
-                      : ListView.separated(
-                          itemCount: currencyVM.allTargetCurrencies.length,
-                          itemBuilder: (context, index) =>
-                              TargetCurrencyListTileView(
-                                  currencyModel:
-                                      currencyVM.allTargetCurrencies[index],
-                                  baseAmount: currencyVM.baseAmount),
-                          separatorBuilder: (BuildContext context, int index) =>
-                              const SizedBox(height: 8),
+              Expanded(
+                flex: 1,
+                child: currencyVM.allTargetCurrencies.isEmpty
+                    ? Center(
+                        child: Text(
+                          "No Records Found",
+                          style: Theme.of(context).textTheme.labelLarge,
                         ),
-                ),
+                      )
+                    : ListView.separated(
+                        itemCount: currencyVM.allTargetCurrencies.length,
+                        itemBuilder: (context, index) =>
+                            TargetCurrencyListTileView(
+                                currencyModel:
+                                    currencyVM.allTargetCurrencies[index],
+                                baseAmount: currencyVM.baseAmount),
+                        separatorBuilder: (BuildContext context, int index) =>
+                            const SizedBox(height: 8),
+                      ),
               ),
               // Form
             ],
